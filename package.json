@@ -1,0 +1,23 @@
+{
+  "name": "nodejs-cli-manager",
+  "version": "1.0.0",
+  "description": "learning project for rsschool",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dosjcq/nodejs-cli-manager.git"
+  },
+  "keywords": [
+    "nodeJs"
+  ],
+  "author": "Artem Nagibin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dosjcq/nodejs-cli-manager/issues"
+  },
+  "homepage": "https://github.com/dosjcq/nodejs-cli-manager#readme"
+}
