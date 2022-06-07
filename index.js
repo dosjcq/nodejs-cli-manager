@@ -3,6 +3,7 @@ import { getUser } from './utils/getUser.js';
 import { closeCLI } from './utils/closeCli.js';
 
 import { changeDirectory } from './src/changeDirectory.js';
+import { listFiles } from './src/listFiles.js';
 
 const startManager = async () => {
   const readble = process.stdin;
@@ -18,17 +19,20 @@ const startManager = async () => {
     closeCLI(userName);
   });
 
-  readble.on('data', (data) => {
+  readble.on('data', async (data) => {
     const msg = data.toString().trim();
 
     switch (msg.split(' ')[0]) {
       case 'up':
-        const upDir = changeDirectory(currentDir, '..');
+        const upDir = await changeDirectory(currentDir, '..');
         currentDir = upDir;
         break;
       case 'cd':
-        const changeDir = changeDirectory(currentDir, msg.split(' ')[1]);
+        const changeDir = await changeDirectory(currentDir, msg.split(' ')[1]);
         currentDir = changeDir;
+        break;
+      case 'ls':
+        await listFiles(currentDir);
         break;
       case '.exit':
         closeCLI(userName);
