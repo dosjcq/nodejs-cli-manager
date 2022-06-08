@@ -6,7 +6,6 @@ export const changeDirectory = async (currentPath, newPath) => {
 
   try {
     await access(resPath);
-    console.log('Correect Path');
   } catch (err) {
     console.log('Wrong path');
     resPath = currentPath;
