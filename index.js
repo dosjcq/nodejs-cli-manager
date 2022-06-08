@@ -5,6 +5,9 @@ import { closeCLI } from './utils/closeCli.js';
 import { changeDirectory } from './src/changeDirectory.js';
 import { listFiles } from './src/listFiles.js';
 import { crdFile } from './src/crdFile.js';
+import { renameFile } from './src/renameFile.js';
+import { copyFile } from './src/copyFile.js';
+import { moveFile } from './src/moveFile.js';
 
 const startManager = async () => {
   const readble = process.stdin;
@@ -43,6 +46,15 @@ const startManager = async () => {
         break;
       case 'rm':
         await crdFile(currentDir, msg.split(' ')[1], msg.split(' ')[0]);
+        break;
+      case 'rn':
+        await renameFile(msg.split(' ')[1], msg.split(' ')[2]);
+        break;
+      case 'cp':
+        await copyFile(msg.split(' ')[1], msg.split(' ')[2]);
+        break;
+      case 'mv':
+        await moveFile(msg.split(' ')[1], msg.split(' ')[2]);
         break;
       case '.exit':
         closeCLI(userName);
