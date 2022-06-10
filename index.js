@@ -1,6 +1,8 @@
 import { homedir } from 'os';
+
 import { getUser } from './utils/getUser.js';
 import { closeCLI } from './utils/closeCli.js';
+import { osModuleHandler } from './utils/osModuleHandler.js';
 
 import { changeDirectory } from './src/changeDirectory.js';
 import { listFiles } from './src/listFiles.js';
@@ -55,6 +57,9 @@ const startManager = async () => {
         break;
       case 'mv':
         await moveFile(msg.split(' ')[1], msg.split(' ')[2]);
+        break;
+      case 'os':
+        osModuleHandler(msg.split(' ')[1]);
         break;
       case '.exit':
         closeCLI(userName);
