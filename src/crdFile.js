@@ -13,6 +13,6 @@ export const crdFile = async (currentPath, fileName, command) => {
       await unlink(`${currentPath}/${fileName}`);
     }
   } catch (err) {
-    console.error(err);
+    throw 'Invalid input';
   }
 };

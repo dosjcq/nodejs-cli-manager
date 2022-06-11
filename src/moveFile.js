@@ -6,6 +6,6 @@ export const moveFile = async (pathToFile, pathToFolder) => {
     const fileName = basename(pathToFile);
     await rename(pathToFile, `${pathToFolder}/${fileName}`);
   } catch (err) {
-    console.log(err);
+    console.log('Operation failed');
   }
 };
