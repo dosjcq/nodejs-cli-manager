@@ -102,6 +102,14 @@ const startManager = async () => {
             transformedMsg.split(' ')[0],
           );
           break;
+        case 'decompress':
+          await validateUserInput(transformedMsg, 3);
+          await compressFile(
+            transformedMsg.split(' ')[1],
+            transformedMsg.split(' ')[2],
+            transformedMsg.split(' ')[0],
+          );
+          break;
         case '.exit':
           closeCLI(userName);
           break;
