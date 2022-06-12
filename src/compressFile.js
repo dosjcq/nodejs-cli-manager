@@ -2,13 +2,17 @@ import { createBrotliCompress, createBrotliDecompress } from 'node:zlib';
 import { createReadStream, createWriteStream } from 'node:fs';
 import { basename, extname } from 'node:path';
 
-export const compressFile = async (pathToFile, pathToDestination, command) => {
+export const compressFile = (pathToFile, pathToDestination, command) => {
   if (command === 'compress') {
     if (extname(basename(pathToDestination)) === '.br') {
       const gzip = createBrotliCompress();
 
       const readStream = createReadStream(pathToFile);
       const writeStream = createWriteStream(pathToDestination);
+
+      gzip.on('error', () => {
+        console.log('Operation Failed');
+      });
 
       readStream.on('error', () => {
         console.log('Operation Failed');
@@ -28,6 +32,10 @@ export const compressFile = async (pathToFile, pathToDestination, command) => {
 
       const readStream = createReadStream(pathToFile);
       const writeStream = createWriteStream(pathToDestination);
+
+      unzip.on('error', () => {
+        console.log('Operation Failed');
+      });
 
       readStream.on('error', () => {
         console.log('Operation Failed');
